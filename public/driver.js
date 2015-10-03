@@ -1,25 +1,28 @@
 $(function() {
-$(document).ready(function () {
-    // code goes here!!
-	var options = {
-  enableHighAccuracy: true,
-  timeout: 5000,
-  maximumAge: 0
-};
+$(document).ready(function () 
+{
+	var options = 
+	{
+		enableHighAccuracy: true,
+		timeout: 5000,
+		maximumAge: 0
+	};
 
-function success(pos) {
-  var crd = pos.coords;
+	function success(pos) 
+	{
+		var crd = pos.coords;
+		console.log('Your current position is:');
+		console.log('Latitude : ' + crd.latitude);
+		console.log('Longitude: ' + crd.longitude);
+		console.log('More or less ' + crd.accuracy + ' meters.');
+	};
 
-  console.log('Your current position is:');
-  console.log('Latitude : ' + crd.latitude);
-  console.log('Longitude: ' + crd.longitude);
-  console.log('More or less ' + crd.accuracy + ' meters.');
-};
+	function error(err) 
+	{
+		console.warn('ERROR(' + err.code + '): ' + err.message);
+	};
 
-function error(err) {
-  console.warn('ERROR(' + err.code + '): ' + err.message);
-};
-
-navigator.geolocation.getCurrentPosition(success, error, options);
+	navigator.geolocation.getCurrentPosition(success, error, options);
+	navigator.geolocation.watchPosition(showPosition);
 });
 });
