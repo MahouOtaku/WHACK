@@ -22,6 +22,7 @@ function success(pos) {
 };
 
 
+
 function error(err) {
   console.warn('ERROR(' + err.code + '): ' + err.message);
 };
@@ -34,12 +35,18 @@ navigator.geolocation.getCurrentPosition(success, error, options);
 
      initMap(latitude, longitude);
 
+
    } else {
      t = setTimeout(checkMapsLoaded, 100);
    }
+
+
+
+
  }
 
 // t = setTimeout(checkMapsLoaded, 100);
+
 
 
 
@@ -63,6 +70,15 @@ function initMap(latitude, longitude) {
     center: {lat: latitude, lng: longitude},
     scrollwheel: false,
     zoom: 8
+ 
+  });
+
+var marker = new google.maps.Marker({
+    position: {lat: latitude, lng: longitude},
+    map: map,
+ 
+
+
   });
 }
 
