@@ -1,3 +1,5 @@
+var t;  //time out
+
 $(function() {
 $(document).ready(function () {
     // code goes here!!
@@ -14,7 +16,11 @@ function success(pos) {
   console.log('Latitude : ' + crd.latitude);
   console.log('Longitude: ' + crd.longitude);
   console.log('More or less ' + crd.accuracy + ' meters.');
+  
+  checkMapsLoaded(crd.latitude, crd.longitude); 
+
 };
+
 
 function error(err) {
   console.warn('ERROR(' + err.code + '): ' + err.message);
@@ -23,8 +29,17 @@ function error(err) {
 navigator.geolocation.getCurrentPosition(success, error, options);
 
 
+ function checkMapsLoaded(latitude, longitude) {
+   if (window.google && window.google.maps && window.google.maps.Map) {
 
+     initMap(latitude, longitude);
 
+   } else {
+     t = setTimeout(checkMapsLoaded, 100);
+   }
+ }
+
+// t = setTimeout(checkMapsLoaded, 100);
 
 
 
@@ -41,11 +56,11 @@ var map;
 
 
 
-function initMap() {
+function initMap(latitude, longitude) {
   
   // Create a map object and specify the DOM element for display.
   var map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
+    center: {lat: latitude, lng: longitude},
     scrollwheel: false,
     zoom: 8
   });
