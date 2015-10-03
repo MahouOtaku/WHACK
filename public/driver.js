@@ -23,6 +23,12 @@ $(document).ready(function ()
 	};
 
 	navigator.geolocation.getCurrentPosition(success, error, options);
-	navigator.geolocation.watchPosition(showPosition);
+
+	//navigator.geolocation.watchPosition(success, error, options);
+	//var watchID = navigator.geolocation.watchPosition(function(position) {
+	//	do_something(position.coords.latitude, position.coords.longitude);
+	//});
+	
+	
 });
 });

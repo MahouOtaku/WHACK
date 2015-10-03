@@ -19,5 +19,41 @@ the bus is full or not
 -->
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="/driver.js"></script>
+<script>
+ 
+        jQuery(window).ready(function(){
+            jQuery("#btnInit").click(initiate_watchlocation);
+            jQuery("#btnStop").click(stop_watchlocation);
+        });
+ 
+        var watchProcess = null;
+ 
+        function initiate_watchlocation() {
+        }
+ 
+        function stop_watchlocation() {
+        }
+ 
+        function handle_errors(error)
+        {
+            switch(error.code)
+            {
+                case error.PERMISSION_DENIED: alert("user did not share geolocation data");
+                break;
+ 
+                case error.POSITION_UNAVAILABLE: alert("could not detect current position");
+                break;
+ 
+                case error.TIMEOUT: alert("retrieving position timedout");
+                break;
+ 
+                default: alert("unknown error");
+                break;
+            }
+        }
+ 
+        function handle_geolocation_query(position) {
+        }
+    </script>
 </body>
 </html>
