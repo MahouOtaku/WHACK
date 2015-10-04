@@ -64,9 +64,12 @@ $(function() {
         message: message
       });
       // tell server to execute 'new message' and send along one parameter
-      socket.emit('new message', message);
-    }
-  }
+      socket.on('driver position update', function (data) {
+    socket.broadcast.emit('driver position update', {
+      latitude: data.latitude,
+      longitude: data.longitude,
+    });
+  });
 
   // Log a message
   function log (message, options) {
