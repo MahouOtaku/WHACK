@@ -1,3 +1,4 @@
+var socket = io();
 $(function() {
 $(document).ready(function () 
 {
@@ -15,15 +16,21 @@ $(document).ready(function ()
 		console.log('Latitude : ' + crd.latitude);
 		console.log('Longitude: ' + crd.longitude);
 		console.log('More or less ' + crd.accuracy + ' meters.');
+		socket.emit('driver position update', function () {
+    latitude: crd.latitude,
+    longitude: crd.longitude
+});
+		
 	};
 
+
+	
 	function error(err) 
 	{
 		console.warn('ERROR(' + err.code + '): ' + err.message);
 	};
 
 	navigator.geolocation.watchPosition(success, error, options);
-	
 	
 });
 });

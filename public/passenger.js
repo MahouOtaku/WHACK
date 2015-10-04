@@ -1,5 +1,5 @@
 var t;  //time out
-
+var socket = io();
 $(function() {
 $(document).ready(function () {
     // code goes here!!
@@ -18,6 +18,14 @@ function success(pos) {
   console.log('More or less ' + crd.accuracy + ' meters.');
   
   checkMapsLoaded(crd.latitude, crd.longitude); 
+  
+socket.on('driver position update', function (data) {
+    marker = new google.maps.Marker({
+        position: {lat: data.latitude, lng: data.longitude},
+        map: map
+    });
+});
+});
 
 };
 

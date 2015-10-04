@@ -62,6 +62,13 @@ io.on('connection', function (socket) {
     });
   });
 
+  socket.on('driver position update', function () {
+    socket.broadcast.emit('driver position update', {
+      latitude: socket.latitude,
+      longitude: socket.longitude,
+    });
+});
+  
   // when the user disconnects.. perform this
   socket.on('disconnect', function () {
     // remove the username from global usernames list
