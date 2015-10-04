@@ -24,5 +24,6 @@ $(document).ready(function ()
 
 	navigator.geolocation.watchPosition(success, error, options);
 	
+	
 });
 });
