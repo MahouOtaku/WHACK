@@ -25,7 +25,7 @@ socket.on('driver position update', function (data) {
         map: map
     });
 });
-});
+
 
 };
 
