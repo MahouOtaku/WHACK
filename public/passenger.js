@@ -16,12 +16,12 @@ function success(pos) {
   console.log('Latitude : ' + crd.latitude);
   console.log('Longitude: ' + crd.longitude);
   console.log('More or less ' + crd.accuracy + ' meters.');
-  
-  checkMapsLoaded(crd.latitude, crd.longitude); 
-  
+
+  checkMapsLoaded(crd.latitude, crd.longitude);
+
 socket.on('driver position update', function (data) {
     marker = new google.maps.Marker({
-        position: {lat: data.latitude, lng: data.longitude},
+      position: {lat: +data.latitude, lng: +data.longitude},
         map: map
     });
 });
@@ -67,36 +67,25 @@ navigator.geolocation.getCurrentPosition(success, error, options);
 });
 
 
-var map;  
+var map;
 
 
 
 function initMap(latitude, longitude) {
-  
+
   // Create a map object and specify the DOM element for display.
   var map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: latitude, lng: longitude},
     scrollwheel: false,
     zoom: 8
- 
+
   });
 
 var marker = new google.maps.Marker({
     position: {lat: latitude, lng: longitude},
     map: map,
- 
+
 
 
   });
 }
-
-
-
-
-
-
-
-
-
-
-
