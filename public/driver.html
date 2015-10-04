@@ -5,19 +5,42 @@ the bus is full or not
 
 <!doctype html>
 <html lang="en">
-<body style="background-color:lightgrey">
+<head>
+<style>
+h1 {
+	color: black; 
+	font-size: 28px;
+	text-align: center;
+    text-align:center;
+    font-family: arial;
+    padding:70px;
+}
+
+
+ 
+#nav {
+    line-height:30px;
+    font-family: arial;
+    font-size: 28px;
+    text-align:center;
+    padding:20px; 
+}
+
+</style>
+</head>
+
+<body style="background-color:white">
+
 <h1>Is the bus full?</h1>
 
-<div class="btn-group" data-toggle="buttons">
+<div id="nav" class="btn-group" data-toggle="buttons">
   <label class="btn btn-primary active">
     <input type="radio" name="options" id="option1" checked> NO
   </label>
   <label class="btn btn-primary">
     <input type="radio" name="options" id="option2"> YES
   </label>
-
 </div>
-
 
 </body>
 </html>
