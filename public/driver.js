@@ -16,7 +16,7 @@ $(document).ready(function ()
 		console.log('Latitude : ' + crd.latitude);
 		console.log('Longitude: ' + crd.longitude);
 		console.log('More or less ' + crd.accuracy + ' meters.');
-		socket.emit('driver position update', function () {
+		socket.emit('driver position update', {
     latitude: crd.latitude,
     longitude: crd.longitude
 });
